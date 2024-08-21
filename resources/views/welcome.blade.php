@@ -220,7 +220,7 @@
                                 <h5 class="section-title__tagline"></h5>
                                 <h2 class="section-title__title">الشكاوى والإقتراحات</h2>
                             </div><!-- section-title -->
-                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdy3H8F3V17KaaZAYgy67PEdmES-pW6OR9Iyqi1nez_6-V1Fw/viewform?embedded=true" width="100%" height="1000" frameborder="0" marginheight="100" marginwidth="0">جارٍ التحميل…</iframe>
+                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdy3H8F3V17KaaZAYgy67PEdmES-pW6OR9Iyqi1nez_6-V1Fw/viewform?embedded=true"  class="google-map__one" allowfullscreen>جارٍ التحميل…</iframe>
                             <a href="{{ url("tel:+966501248222") }}" class="nisoz-btn mt-4">
                                 <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span
                                     class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
