@@ -174,7 +174,7 @@
                         <a href="{{ url("javascript::void(0)") }}" class="main-menu__toggler mobile-nav__toggler">
                             <i class="fa fa-bars"></i>
                         </a><!-- /.mobile menu btn -->
-                        <a href="{{ url("tel:+966501248222") }}" class="main-menu__phone">
+                        <a href="{{ url("tel:+966544802279") }}" class="main-menu__phone">
                             <i class="icon-telephone"></i>
                             0501248222
                         </a><!-- /.phone-number -->
@@ -233,24 +233,24 @@
             </div>
         </section>
         <!--Google Map Start-->
-        <section class="google-map google-map-two">
+        {{-- <section class="google-map google-map-two">
             <div class="container">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.719302505505!2d46.783739384998356!3d24.805063484080105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2effd21228103f%3A0x4228348c75f8e094!2z2YXYpNiz2LPYqSDYtdmGINix2YjZhCDZhNmE2LPYqtin2KbYsQ!5e0!3m2!1sar!2ssa!4v1713425048777!5m2!1sar!2ssa"
                     class="google-map__one" allowfullscreen></iframe>
             </div>
-        </section>
+        </section> --}}
         <!--Google Map End-->
 
         <!--Contact Info Start-->
-        <section class="contact" style="margin-bottom: 100px;">
+        {{-- <section class="contact" style="margin-bottom: 100px;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-12 wow fadeInLeft" data-wow-delay="200ms">
                         <div class="faq-page__help">
                             <div class="faq-page__help__icon"><span class="icon-phone-call-1"></span></div>
                             <h3 class="faq-page__help__title">للإستفسارات</h3>
-                            <p class="faq-page__help__text">هاتف<a href="{{ url("tel:+966501248222") }}">966501248222+</a>
+                            <p class="faq-page__help__text">هاتف<a href="{{ url("tel:+966544802279") }}">966501248222+</a>
                             </p>
                         </div>
                     </div>
@@ -271,7 +271,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!--Contact Info End-->
 
         <footer class="main-footer">
@@ -313,7 +313,7 @@
                             <p class="main-footer__about__text">الرياض ، طريق الصحابة، اليرموك، الرياض 13251</p>
                             <ul class="main-footer__about__info">
                                 <li><span class="fas fa-phone-square"></span><a
-                                        href="{{ url("tel:+966501248222") }}">966501248222+</a></li>
+                                        href="{{ url("tel:+966544802279") }}">966501248222+</a></li>
                                 <li><span class="fas fa-envelope"></span><a
                                         href="{{ url("mailto:info@sunroll.com.sa") }}">info@sunroll.com.sa</a></li>
                             </ul>
@@ -351,7 +351,7 @@
                 </li>
                 <li>
                     <i class="fa fa-phone-alt"></i>
-                    <a href="{{ url("tel:+966501248222") }}">966501248222+</a>
+                    <a href="{{ url("tel:+966544802279") }}">966501248222+</a>
                 </li>
             </ul><!-- /.mobile-nav__contact -->
             <div class="mobile-nav__social">
@@ -399,7 +399,7 @@
                     </a>
                 </li>
                 <li class="nav__item">
-                    <a href="{{ url("tel:+966501248222") }}" class="nav__item-link">
+                    <a href="{{ url("tel:+966544802279") }}" class="nav__item-link">
                         <div class="nav__item-icon">
                             <i class="fas fa-phone-alt"></i>
                         </div>

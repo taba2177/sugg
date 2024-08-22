@@ -174,7 +174,7 @@
                         <a href="{{ url("javascript::void(0)") }}" class="main-menu__toggler mobile-nav__toggler">
                             <i class="fa fa-bars"></i>
                         </a><!-- /.mobile menu btn -->
-                        <a href="{{ url("tel:+966501248222") }}" class="main-menu__phone">
+                        <a href="{{ url("tel:+966544802279") }}" class="main-menu__phone">
                             <i class="icon-telephone"></i>
                             0501248222
                         </a><!-- /.phone-number -->
@@ -221,7 +221,7 @@
                                 <h2 class="section-title__title">الشكاوى والإقتراحات</h2>
                             </div><!-- section-title -->
                             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdy3H8F3V17KaaZAYgy67PEdmES-pW6OR9Iyqi1nez_6-V1Fw/viewform?embedded=true"  class="google-map__one" allowfullscreen>جارٍ التحميل…</iframe>
-                            <a href="{{ url("tel:+966501248222") }}" class="nisoz-btn mt-4">
+                            <a href="{{ url("tel:+966544802279") }}" class="nisoz-btn mt-4">
                                 <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span
                                     class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
                                 <span class="nisoz-btn__text">إتصل بنا</span>
@@ -249,7 +249,7 @@
                         <div class="faq-page__help">
                             <div class="faq-page__help__icon"><span class="icon-phone-call-1"></span></div>
                             <h3 class="faq-page__help__title">للإستفسارات</h3>
-                            <p class="faq-page__help__text">هاتف<a href="{{ url("tel:+966501248222") }}">966501248222+</a>
+                            <p class="faq-page__help__text">هاتف<a href="{{ url("tel:+966544802279") }}">966501248222+</a>
                             </p>
                         </div>
                     </div>
@@ -312,7 +312,7 @@
                             <p class="main-footer__about__text">الرياض ، طريق الصحابة، اليرموك، الرياض 13251</p>
                             <ul class="main-footer__about__info">
                                 <li><span class="fas fa-phone-square"></span><a
-                                        href="{{ url("tel:+966501248222") }}">966501248222+</a></li>
+                                        href="{{ url("tel:+966544802279") }}">966501248222+</a></li>
                                 <li><span class="fas fa-envelope"></span><a
                                         href="{{ url("mailto:info@sunroll.com.sa") }}">info@sunroll.com.sa</a></li>
                             </ul>
@@ -350,7 +350,7 @@
                 </li>
                 <li>
                     <i class="fa fa-phone-alt"></i>
-                    <a href="{{ url("tel:+966501248222") }}">966501248222+</a>
+                    <a href="{{ url("tel:+966544802279") }}">966501248222+</a>
                 </li>
             </ul><!-- /.mobile-nav__contact -->
             <div class="mobile-nav__social">
@@ -398,7 +398,7 @@
                     </a>
                 </li>
                 <li class="nav__item">
-                    <a href="{{ url("tel:+966501248222") }}" class="nav__item-link">
+                    <a href="{{ url("tel:+966544802279") }}" class="nav__item-link">
                         <div class="nav__item-icon">
                             <i class="fas fa-phone-alt"></i>
                         </div>

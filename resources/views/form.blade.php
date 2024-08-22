@@ -13,7 +13,7 @@
             <!-- Name Field -->
             <div class="col-md-6">
                 <div class="contact-one__input-box">
-                    <span class="wpcf7-form-control-wrap" data-name="text-117"><input type="text" name="name" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="اسمك" required></span>
+             <input type="text" name="name" class="form-control" aria-invalid="false" placeholder="اسمك" required>
                 </div>
             </div>
 
@@ -46,7 +46,7 @@
             <!-- Complaint Text Area -->
             <div class="col-md-12">
                 <div class="contact-one__input-box">
-                    <textarea name="complaint" class="form-control" rows="5" placeholder="وصف الشكوى" required></textarea>
+                    <textarea name="message" class="form-control" rows="5" placeholder="وصف الشكوى" required></textarea>
                 </div>
             </div>
 
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <!-- Submit Button -->
-            <center>
+        <center>
             <div class="col-md-12" style="margin:0 50px">
                 <div class="contact-one__btn-box">
                     <button type="submit" class="nisoz-btn">
