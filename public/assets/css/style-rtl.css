@@ -10099,6 +10099,7 @@ body.locked .page-wrapper {
   font-family: var(--nisoz-font);
   display: block;
   font-weight: 500;
+  border: 1px solid #646466;
 }
 
 .contact-one__input-box .bootstrap-select .dropdown-menu {
@@ -10182,6 +10183,7 @@ body.locked .page-wrapper {
   border: none;
   outline: none;
   margin-bottom: 0px;
+  border: 1px solid #646466;
 }
 
 .contact-one__input-box.text-message-box {
