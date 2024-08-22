@@ -20,7 +20,7 @@
             <!-- Email Field -->
             <div class="col-md-6">
                 <div class="contact-one__input-box">
-                    <input type="email" name="email" class="form-control" placeholder="بريدك الإلكتروني" required>
+                    <input type="text" name="email" class="form-control" placeholder="الحي" required>
                 </div>
             </div>
 
