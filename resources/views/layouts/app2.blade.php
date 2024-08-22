@@ -19,6 +19,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>صن رول | Sun Roll</title>
 
+
+
     <!-- favicons Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset("/../assets/images/favicons/apple-touch-icon.png") }}" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset("/../assets/images/favicons/favicon-32x32.png") }}" />
@@ -51,9 +53,9 @@
     <link rel="stylesheet" href="{{ asset("/../assets/css/style-rtl.css") }}" />
     <link rel="stylesheet" href="{{ asset("/../assets/css/style-custom-rtl.css") }}" />
     <link rel="stylesheet" href="{{ asset("/../assets/vendors/sunroll-toolbar/css/sunroll-toolbar.css") }}">
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
     <!-- Snap Pixel Code -->
     <script type='text/javascript'>
         (function (e, t, n) {
@@ -446,6 +448,87 @@
     <script src="{{ asset("/../assets/vendors/fontawesome/js/all.min.js") }}"></script>
     <!-- template js -->
     <script src="{{ asset("/../assets/js/main.js") }}"></script>
+
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            loadComplaints('unread');
+
+            // $('#unread-tab').on('click', function() {
+            //     loadComplaints('unread');
+            // });
+
+            // $('#read-tab').on('click', function() {
+            //     loadComplaints('read');
+            // });
+
+
+        // Event listeners for tab clicks
+        $('#unread-tab').on('click', function() {
+            status = 'unread';
+            loadComplaints(status);
+        });
+
+        $('#read-tab').on('click', function() {
+            status = 'read';
+            loadComplaints(status);
+        });
+
+            function loadComplaints(status) {
+                $('#complaints-table').DataTable({
+                    // processing: true,
+                    serverSide: true,
+                    destroy: true, // Destroy the previous instance
+                    ajax: {
+                        url: '{{ route("complaints.get") }}',
+                        data: { status: status },
+                        dataSrc: function (json) {
+                console.log("Received data:", json);
+                return json.data;
+            }
+                    },
+                    columns: [
+                        { data: 'name' },
+                        { data: 'address' },
+                        { data: 'phone' },
+                        { data: 'complaint_type' },
+                        { data: 'message' },
+                        {
+                            data: 'id',
+                            render: function(data, type, row) {
+                                if (status === 'unread') {
+                                    return `<button class="mark-as-read" data-id="${data}">Mark as Read</button>`;
+                                } else {
+                                    return 'Already Read';
+                                }
+                            }
+                        }
+                    ]
+                });
+            }
+
+            setInterval(function() {
+            $('#complaints-table').DataTable().ajax.reload();
+        }, 30000); // 30 seconds
+
+            $(document).on('click', '.mark-as-read', function() {
+                let complaintId = $(this).data('id');
+
+                $.ajax({
+                    url: '{{ url("complaints/mark-as-read") }}/' + complaintId,
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        $('#complaints-table').DataTable().ajax.reload();
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 
 

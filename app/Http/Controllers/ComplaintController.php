@@ -66,7 +66,7 @@ class ComplaintController extends Controller
         $status = $request->status ?? 'unread';
         $complaints = Complaint::where('status', $status)->get();
 
-        return response()->json(['complaints' => $complaints]);
+        return response()->json(['data' => $complaints]);
     }
 
     public function markAsRead($id)
