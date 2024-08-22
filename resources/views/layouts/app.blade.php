@@ -176,7 +176,7 @@
                         </a><!-- /.mobile menu btn -->
                         <a href="{{ url("tel:+966544802279") }}" class="main-menu__phone">
                             <i class="icon-telephone"></i>
-                            0501248222
+                            0544802279
                         </a><!-- /.phone-number -->
                     </div><!-- /.main-menu__right -->
                 </div><!-- /.container -->
@@ -222,10 +222,12 @@
 
                             </div><!-- section-title -->
 
+                            @if (session('message'))
+                            <div class="alert alert-primary" role="alert">{{ session('message') }}</div>
 
-                                @yield('content');
-
-
+                            @else
+                            @yield('content');
+                            @endif
 
                         </div>
                     </div>
@@ -250,7 +252,7 @@
                         <div class="faq-page__help">
                             <div class="faq-page__help__icon"><span class="icon-phone-call-1"></span></div>
                             <h3 class="faq-page__help__title">للإستفسارات</h3>
-                            <p class="faq-page__help__text">هاتف<a href="{{ url("tel:+966544802279") }}">966501248222+</a>
+                            <p class="faq-page__help__text">هاتف<a href="{{ url("tel:+966544802279") }}">966544802279+</a>
                             </p>
                         </div>
                     </div>
@@ -313,7 +315,7 @@
                             <p class="main-footer__about__text">الرياض ، طريق الصحابة، اليرموك، الرياض 13251</p>
                             <ul class="main-footer__about__info">
                                 <li><span class="fas fa-phone-square"></span><a
-                                        href="{{ url("tel:+966544802279") }}">966501248222+</a></li>
+                                        href="{{ url("tel:+966544802279") }}">966544802279+</a></li>
                                 <li><span class="fas fa-envelope"></span><a
                                         href="{{ url("mailto:info@sunroll.com.sa") }}">info@sunroll.com.sa</a></li>
                             </ul>
@@ -351,7 +353,7 @@
                 </li>
                 <li>
                     <i class="fa fa-phone-alt"></i>
-                    <a href="{{ url("tel:+966544802279") }}">966501248222+</a>
+                    <a href="{{ url("tel:+966544802279") }}">966544802279+</a>
                 </li>
             </ul><!-- /.mobile-nav__contact -->
             <div class="mobile-nav__social">

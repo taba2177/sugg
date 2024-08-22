@@ -1,13 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-{{--
-@if ($success)
-<label>{{$success}}</label>
-@endif --}}
 
 <div class="contact-one__form contact-form-validated">
-    <form action="{{ route('complaints.store') }}" method="POST" enctype="multipart/form-data" class="wpcf7-form init" aria-label="Contact form" novalidate="novalidate" data-status="init">
+    <form action="{{ url('complaints') }}" method="POST" enctype="multipart/form-data" class="wpcf7-form init" aria-label="Contact form" novalidate="novalidate" data-status="init">
         @csrf
         <div class="row">
             <!-- Name Field -->
@@ -20,7 +16,7 @@
             <!-- Email Field -->
             <div class="col-md-6">
                 <div class="contact-one__input-box">
-                    <input type="text" name="email" class="form-control" placeholder="الحي" required>
+                    <input type="text" name="address" class="form-control" placeholder="الحي" required>
                 </div>
             </div>
 

@@ -9,7 +9,8 @@ use App\Http\Controllers\ComplaintController;
 //     return view('complaints_suggestions');
 // });
 
-Route::post('/complaints', [ComplaintController::class, 'store'])->name('complaints.store');
+// Route::post('/complaints', [ComplaintController::class, 'store'])->name('complaints.store');
+Route::post('complaints', 'App\Http\Controllers\ComplaintController@store');
 
 Route::get('/', function () {
     return view('form');
