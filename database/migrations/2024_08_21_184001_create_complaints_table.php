@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('complaint_type');
             $table->text('message');
+            $table->string('status')->default('unread'); // 'unread' or 'read'
             $table->json('images')->nullable();
             $table->timestamps();
         });

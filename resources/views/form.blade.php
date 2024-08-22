@@ -2,6 +2,16 @@
 
 @section('content')
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="contact-one__form contact-form-validated">
     <form action="{{ url('complaints') }}" method="POST" enctype="multipart/form-data" class="wpcf7-form init" aria-label="Contact form" novalidate="novalidate" data-status="init">
         @csrf
