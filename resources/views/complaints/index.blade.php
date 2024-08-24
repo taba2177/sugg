@@ -39,6 +39,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <!-- Include DataTables JS -->
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+
+
     <script>
         $(document).ready(function() {
 
@@ -50,6 +53,7 @@
             // Function to load complaints based on status
             function loadComplaints(status) {
                 const table = $('#complaints-table').DataTable({
+
                     language: {
                     url: '/ar.json',
                     },
@@ -135,6 +139,7 @@
                     scrollCollapse: true, // Enable scroll collapse
                     order: [[0, 'asc']], // Default ordering on first column
                     stateSave: false, // Save the state of the table including pagination and search
+                    layout: {topStart: {buttons: ['copy', 'csv', 'excel', 'pdf', 'print']}},
                     drawCallback: function(settings) {
                 $('.complaint-gallery').each(function() {
                     lightGallery(this, {
