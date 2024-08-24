@@ -206,9 +206,9 @@
             <div class="container">
                 <ul class="page-header__breadcrumb list-unstyled">
                     <li><a href="https://sunroll.com.sa/index.html">الصفحة الرئيسية</a></li>
-                    <li><span>إتصل بنا</span></li>
+                    <li><span>ادارة الشكاوى</span></li>
                 </ul><!-- /.page-breadcrumb list-unstyled -->
-                <h2 class="page-header__title">إتصل بنا</h2><!-- /.page-title -->
+                <h2 class="page-header__title">ادارة الشكاوى</h2><!-- /.page-title -->
             </div><!-- /.container -->
         </section><!-- /.page-header -->
 
@@ -217,17 +217,6 @@
                 <div class="row">
 
                     <div class="col-lg-12 wow fadeInRight" data-wow-delay="200ms">
-                        <div class="about-four__content">
-                            <div class="section-title">
-                                <div class="section-title__triangle">
-                                    <span class="section-title__triangle-left"></span>
-                                    <span class="section-title__triangle-right"></span>
-                                </div>
-                                <h5 class="section-title__tagline"></h5>
-                                <h2 class="section-title__title">الشكاوى والإقتراحات</h2>
-
-                            </div><!-- section-title -->
-
                             @if (session('message'))
                             <div class="alert alert-primary" role="alert">{{ session('message') }}</div>
 
@@ -235,7 +224,7 @@
                             @yield('content');
                             @endif
 
-                        </div>
+
                     </div>
                 </div>
             </div>
