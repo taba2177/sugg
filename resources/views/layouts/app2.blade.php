@@ -56,6 +56,8 @@
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 
+    <!-- Include DataTables CSS -->
+
     <!-- Snap Pixel Code -->
     <script type='text/javascript'>
         (function (e, t, n) {
@@ -385,6 +387,25 @@
         <i class="fab fa-whatsapp wh-100"></i>
     </a>
 
+        <!-- Modal for displaying large images -->
+        <div class="modal fade" id="imageModal" tabindex="1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="imageModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img id="modal-img" src="" alt="Complaint Image" class="modal-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     <nav class="nav-mobile">
         <div class="nav-box">
             <ul class="nav-container">
@@ -396,14 +417,14 @@
                         <span class="nav__item-text">الرئيسية</span>
                     </a>
                 </li>
-                <li class="nav__item">
+                {{-- <li class="nav__item">
                     <a href="https://www.instagram.com/sunroll.curtains" class="nav__item-link" target="_blank">
                         <div class="nav__item-icon">
                             <i class="fab fa-instagram"></i>
                         </div>
                         <span class="nav__item-text">إنستجرام</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav__item">
                     <a href="{{ url("tel:+966544802279") }}" class="nav__item-link">
                         <div class="nav__item-icon">
@@ -450,84 +471,6 @@
     <script src="{{ asset("/../assets/js/main.js") }}"></script>
 
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            loadComplaints('unread');
-
-            // $('#unread-tab').on('click', function() {
-            //     loadComplaints('unread');
-            // });
-
-            // $('#read-tab').on('click', function() {
-            //     loadComplaints('read');
-            // });
-
-
-        // Event listeners for tab clicks
-        $('#unread-tab').on('click', function() {
-            status = 'unread';
-            loadComplaints(status);
-        });
-
-        $('#read-tab').on('click', function() {
-            status = 'read';
-            loadComplaints(status);
-        });
-
-            function loadComplaints(status) {
-                $('#complaints-table').DataTable({
-                    // processing: true,
-                    serverSide: true,
-                    destroy: true, // Destroy the previous instance
-                    ajax: {
-                        url: '{{ route("complaints.get") }}',
-                        data: { status: status },
-                        dataSrc: function (json) {
-                console.log("Received data:", json);
-                return json.data;
-            }
-                    },
-                    columns: [
-                        { data: 'name' },
-                        { data: 'address' },
-                        { data: 'phone' },
-                        { data: 'complaint_type' },
-                        { data: 'message' },
-                        {
-                            data: 'id',
-                            render: function(data, type, row) {
-                                if (status === 'unread') {
-                                    return `<button class="mark-as-read" data-id="${data}">Mark as Read</button>`;
-                                } else {
-                                    return 'Already Read';
-                                }
-                            }
-                        }
-                    ]
-                });
-            }
-
-            setInterval(function() {
-            $('#complaints-table').DataTable().ajax.reload();
-        }, 30000); // 30 seconds
-
-            $(document).on('click', '.mark-as-read', function() {
-                let complaintId = $(this).data('id');
-
-                $.ajax({
-                    url: '{{ url("complaints/mark-as-read") }}/' + complaintId,
-                    method: 'POST',
-                    data: {
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        $('#complaints-table').DataTable().ajax.reload();
-                    }
-                });
-            });
-        });
-    </script>
 
 </body>
 

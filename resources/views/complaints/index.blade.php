@@ -33,24 +33,6 @@
             </tbody>
         </table>
 
-
-    <!-- Modal for displaying large images -->
-    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="imageModalLabel"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body text-center">
-                    <img id="modal-img" src="" alt="Complaint Image" class="modal-img">
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- Include Bootstrap JS -->
@@ -95,7 +77,18 @@
                         { data: 'phone' },
                         { data: 'complaint_type' },
                         { data: 'message' },
-                        { data: 'created_at' },
+                        { data: 'created_at' ,
+                        render: function(data) {
+
+                        var date = new Date(data);
+                        var months = ["يناير", "فبراير", "مارس", "إبريل", "مايو", "يونيو",
+                         "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+                            ];
+                        var days = ["اﻷحد", "اﻷثنين", "الثلاثاء", "اﻷربعاء", "الخميس", "الجمعة", "السبت"];
+                        var delDateString = days[date.getDay()] + ', ' + date.getDate() + ' ' + months[date.getMonth()] + ', ' + date.toLocaleTimeString();
+                        return delDateString;
+                        }
+                        },
                         {
                             data: 'images', // Assuming the JSON has an 'images' array
                             render: function(data, type, row) {
@@ -176,6 +169,23 @@
                 const imgSrc = $(this).data('full');
                 $('#modal-img').attr('src', imgSrc);
                 $('#imageModal').modal('show');
+            });
+             // Image click event to open modal
+            //  $(document).on('click', '.img-thumbnail', function() {
+            //     const imgSrc = $(this).data('full');
+            //     $('#modal-img').attr('src', imgSrc);
+            //     $('#imageModal').modal('show');
+            // });
+
+            // Close modal when clicking the close button or outside the modal content
+            $('.modal-close').on('click', function() {
+                $('#imageModal').fadeOut();
+            });
+
+            $('#imageModal').on('click', function(e) {
+                if ($(e.target).is('.modal-content') === false) {
+                    $(this).fadeOut();
+                }
             });
         });
     </script>
