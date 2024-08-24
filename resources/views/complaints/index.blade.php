@@ -124,7 +124,7 @@
                             }
                         }
                     ],
-                    responsive: true,
+
                     paging: true,
                     scrollY: 400,
                     searching: false,
