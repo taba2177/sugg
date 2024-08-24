@@ -53,7 +53,7 @@
                     language: {
                     url: '/ar.json',
                     },
-                    processing: true,
+                    processing: false,
                     serverSide: false,
                     destroy: true, // Destroy the previous instance
                     ajax: {
@@ -112,6 +112,7 @@
                     ],
                     responsive: true,
                     paging: true,
+                    scrollY: 400,
                     searching: false,
                     pagingType: "simple_numbers", // Show pagination controls
                     pageLength: 10, // Set default page length
