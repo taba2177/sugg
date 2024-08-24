@@ -6,7 +6,7 @@ import win32service
 import win32event
 import logging
 from win10toast import ToastNotifier
-
+from win11toast import toast
 toaster = ToastNotifier()
 
 class ComplaintNotifierService(win32serviceutil.ServiceFramework):
@@ -47,12 +47,13 @@ class ComplaintNotifierService(win32serviceutil.ServiceFramework):
                 logging.debug(f'API Response: {data}')
 
                 if data['count'] > last_count:
-                    toaster.show_toast(
-                    "شكاوي العملاء",
-                    f" لديك {data['count']}  شكوى جديدة ",
-                    duration=10,
-                    threaded=True
-                )
+                    toast('شكاوى العملاء',f" لديك {data['count']}  شكوى جديدة ", image='https://4.bp.blogspot.com/-u-uyq3FEqeY/UkJLl773BHI/AAAAAAAAYPQ/7bY05EeF1oI/s800/cooking_toaster.png')
+                #     toaster.show_toast(
+                #     "شكاوي العملاء",
+                #     f" لديك {data['count']}  شكوى جديدة ",
+                #     duration=10,
+                #     threaded=True
+                # )
                     last_count = data['count']
                     logging.info(f'Notification sent. New count: {data["count"]}')
 
@@ -60,6 +61,8 @@ class ComplaintNotifierService(win32serviceutil.ServiceFramework):
                 logging.error(f"Error: {e}")
 
             time.sleep(120)  # Check every 120 seconds
+            self.ReportServiceStatus(win32service.SERVICE_RUNNING)
 
 if __name__ == '__main__':
     win32serviceutil.HandleCommandLine(ComplaintNotifierService)
+

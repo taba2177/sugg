@@ -1,6 +1,6 @@
 import requests
 from win10toast import ToastNotifier
-
+from win11toast import toast
 toaster = ToastNotifier()
 
 def fetch_and_notify():
@@ -14,12 +14,13 @@ def fetch_and_notify():
         if response.status_code == 200:
             data = response.json()
             if 'count' in data:
-                toaster.show_toast(
-                    "شكاوي العملاء",
-                    f"شكوى جديدة {data['count']} لديك",
-                    duration=10,
-                    threaded=True
-                )
+                toast('شكاوى العملاء',f" لديك {data['count']}  شكوى جديدة ", image='https://4.bp.blogspot.com/-u-uyq3FEqeY/UkJLl773BHI/AAAAAAAAYPQ/7bY05EeF1oI/s800/cooking_toaster.png')
+                # toaster.show_toast(
+                #     "شكاوي العملاء",
+                #     f"شكوى جديدة {data['count']} لديك",
+                #     duration=10,
+                #     threaded=True
+                # )
                 print("Notification sent")
         else:
             print(f"Received unexpected status code {response.content}")
