@@ -91,13 +91,27 @@
                         },
                         {
                             data: 'images', // Assuming the JSON has an 'images' array
+                            // render: function(data, type, row) {
+                            //     if (data && data.length > 0) {
+                            //         return data.map(image => `<img src="/storage/${image}" class="img-thumbnail" data-full="/storage/${image}" style="max-width: 100px;" alt="Image">`).join('');
+                            //     } else {
+                            //         return 'No Image';
+                            //     }
+                            // }
                             render: function(data, type, row) {
-                                if (data && data.length > 0) {
-                                    return data.map(image => `<img src="/storage/${image}" class="img-thumbnail" data-full="/storage/${image}" style="max-width: 100px;" alt="Image">`).join('');
-                                } else {
-                                    return 'No Image';
-                                }
-                            }
+                        if (data && data.length > 0) {
+                            let gallery = '<div class="complaint-gallery">';
+                            data.forEach(image => {
+                                gallery += `<a href="/storage/${image}" data-lg-size="1600-1067">
+                                              <img src="/storage/${image}" class="img-thumbnail" alt="Image">
+                                            </a>`;
+                            });
+                            gallery += '</div>';
+                            return gallery;
+                        } else {
+                            return 'No Image';
+                        }
+                    }
                         },
                         {
                             data: 'id',
@@ -121,6 +135,16 @@
                     scrollCollapse: true, // Enable scroll collapse
                     order: [[0, 'asc']], // Default ordering on first column
                     stateSave: false, // Save the state of the table including pagination and search
+                    drawCallback: function(settings) {
+                $('.complaint-gallery').each(function() {
+                    lightGallery(this, {
+                        selector: 'a',
+                        zoom: true,
+                        fullScreen: true,
+                        thumbnail: true,
+                    });
+                });
+            }
                 });
 
                 // Preserve scroll position after reload
