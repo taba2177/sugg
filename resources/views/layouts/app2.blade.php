@@ -381,7 +381,7 @@
     </a>
     <!-- back-to-top-end -->
 
-    <a href="https://api.whatsapp.com/send?phone=966501253111&amp;text=" class="fixed-whatsapp">
+    <a href="https://api.whatsapp.com/send?phone=966544802279&amp;text=" class="fixed-whatsapp">
         <i class="fab fa-whatsapp wh-100"></i>
     </a>
 
@@ -413,7 +413,7 @@
                     </a>
                 </li>
                 <li class="nav__item">
-                    <a href="https://api.whatsapp.com/send?phone=966501253111&amp;text=" class="nav__item-link">
+                    <a href="https://api.whatsapp.com/send?phone=966544802279&amp;text=" class="nav__item-link">
                         <div class="nav__item-icon">
                             <i class="fab fa-whatsapp"></i>
                         </div>

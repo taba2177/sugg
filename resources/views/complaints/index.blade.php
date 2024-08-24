@@ -1,68 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complaints Table</title>
-    <!-- Include Bootstrap CSS for styling and modals -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Include DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
-    <!-- Custom CSS for table design and margins -->
-    <style>
-        .custom-table-container {
-            margin: 20px;
-        }
-        .custom-table th, .custom-table td {
-            vertical-align: middle;
-        }
-        .img-thumbnail {
-            width: 50px;
-            height: auto;
-            cursor: pointer;
-        }
-        .modal-img {
-            max-width: 100%;
-        }
-    </style>
-</head>
-<body>
+@extends('layouts.app2')
+
+@section('content')
     <div class="container custom-table-container">
         <!-- Tabs for switching between unread and read complaints -->
         <ul class="nav nav-tabs" id="complaints-tabs">
             <li class="nav-item">
-                <a class="nav-link active" id="unread-tab" href="#">Unread Complaints</a>
+                <a class="nav-link active" id="unread-tab">جديد</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="read-tab" href="#">Read Complaints</a>
+                <a class="nav-link" id="read-tab" >مكتمل</a>
             </li>
         </ul>
+    </div>
+<br>
 
         <!-- DataTable -->
-        <table id="complaints-table" class="display custom-table" style="width:100%">
+        <table id="complaints-table" class="display custom-table" style="width:100%"  >
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Phone</th>
-                    <th>Complaint Type</th>
-                    <th>Message</th>
-                    <th>Images</th>
-                    <th>Action</th>
+                    <th>الاسم</th>
+                    <th>الحي</th>
+                    <th>الجوال</th>
+                    <th>نوع الشكوى</th>
+                    <th>التفاصيل</th>
+                    <th>تاريخ الشكوى</th>
+                    <th>صور</th>
+                    <th>مكتمل/غير مكتمل</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- DataTables will populate this automatically -->
             </tbody>
         </table>
-    </div>
+
 
     <!-- Modal for displaying large images -->
     <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="imageModalLabel">Image Preview</h5>
+                    <h5 class="modal-title" id="imageModalLabel"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -82,6 +59,7 @@
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
+
             let status = 'unread';
             let scrollPos = 0; // Variable to store scroll position
 
@@ -90,22 +68,26 @@
             // Function to load complaints based on status
             function loadComplaints(status) {
                 const table = $('#complaints-table').DataTable({
+                    language: {
+                    url: '/ar.json',
+                    },
                     processing: true,
-                    serverSide: true,
+                    serverSide: false,
                     destroy: true, // Destroy the previous instance
                     ajax: {
                         url: '{{ route("complaints.get") }}',
                         data: { status: status },
-                        dataSrc: function (json) {
-                        console.log("Received data:", json);
-                        return json.data;
-                        }
-                        // dataSrc: function(json) {
-                        //     if (!json.recordsTotal || !json.recordsFiltered) {
-                        //         return [];
-                        //     }
-                        //     return json.data;
+                        // dataSrc: function (json) {
+                        // console.log("Received data:", json);
+                        // return json.data;
                         // }
+                        dataSrc: function(json) {
+                            // if (!json.recordsTotal || !json.recordsFiltered) {
+                            //     return [];
+                            // }
+                            console.log("Received data:", json);
+                            return json.data;
+                        }
                     },
                     columns: [
                         { data: 'name' },
@@ -113,11 +95,12 @@
                         { data: 'phone' },
                         { data: 'complaint_type' },
                         { data: 'message' },
+                        { data: 'created_at' },
                         {
                             data: 'images', // Assuming the JSON has an 'images' array
                             render: function(data, type, row) {
                                 if (data && data.length > 0) {
-                                    return data.map(image => `<img src="${image.url}" class="img-thumbnail" data-full="${image.full_url}" alt="Image">`).join('');
+                                    return data.map(image => `<img src="/storage/${image}" class="img-thumbnail" data-full="/storage/${image}" style="max-width: 100px;" alt="Image">`).join('');
                                 } else {
                                     return 'No Image';
                                 }
@@ -127,21 +110,23 @@
                             data: 'id',
                             render: function(data, type, row) {
                                 if (status === 'unread') {
-                                    return `<button class="mark-as-read btn btn-sm btn-primary" data-id="${data}">Mark as Read</button>`;
+                                    return `<button class="mark-as-read btn btn-sm btn-primary" data-id="${data}">اكمال الاجراء</button>`;
                                 } else {
-                                    return 'Already Read';
+                                    return 'مكتمل';
                                 }
                             }
                         }
                     ],
+                    responsive: true,
                     paging: true,
+                    searching: false,
                     pagingType: "simple_numbers", // Show pagination controls
                     pageLength: 10, // Set default page length
                     lengthChange: false, // Disable length change dropdown
-                    autoWidth: false, // Disable automatic column width calculation
+                    autoWidth: true, // Disable automatic column width calculation
                     scrollCollapse: true, // Enable scroll collapse
                     order: [[0, 'asc']], // Default ordering on first column
-                    stateSave: true, // Save the state of the table including pagination and search
+                    stateSave: false, // Save the state of the table including pagination and search
                 });
 
                 // Preserve scroll position after reload
@@ -194,5 +179,4 @@
             });
         });
     </script>
-</body>
-</html>
+@endsection

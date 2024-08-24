@@ -44,16 +44,29 @@ class ComplaintController extends Controller
 
         if ($request->hasFile('images')) {
             $images = [];
-            foreach ($request->file('images') as $file) {
-                $path = $file->store('complaints', 'public');
-                $images[] = $path;
+            try {
+                foreach ($request->file('images') as $file) {
+                    $path = $file->store('attach', 'public');
+                    $images[] = $path;
+                }
+                $validated['images'] = $images;
+            } catch (\Exception $e) {
+                return redirect()->back()->withErrors(['error' => 'File upload failed: ' . $e->getMessage()]);
             }
-            $validated['images'] = $images;
         }
+
+        // if ($request->hasFile('images')) {
+        //     $images = [];
+        //     foreach ($request->file('images') as $file) {
+        //         $path = $file->store('attach', 'public');
+        //         $images[] = $path;
+        //     }
+        //     $validated['images'] = $images;
+        // }
 
         Complaint::create($validated);
 
-        return redirect()->back()->with('message', 'تم إرسال الشكوى بنجاح، ستتواصل معك الإدارة لحل المشكلة');
+        return redirect()->back()->with('message', 'تم إرسال الشكوى بنجاح، ستتواصل معك الإدارة في اقرب وقت لحل المشكلة');
     }
 
     public function index()

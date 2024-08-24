@@ -14087,9 +14087,10 @@ body.boxed-wrapper .main-menu__phone {
 .custom-table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 18px;
-    text-align: left;
+    margin: 50px 0;
+    font-size: 14px;
+    box-sizing: content-box;
+
 }
 
 .custom-table th, .custom-table td {
@@ -14111,4 +14112,19 @@ body.boxed-wrapper .main-menu__phone {
 
 .custom-table tbody tr:last-of-type {
     border-bottom: 2px solid var(--nisoz-base);
+}
+
+.custom-table-container {
+    margin: 20px;
+}
+.custom-table th, .custom-table td {
+    vertical-align: middle;
+}
+.img-thumbnail {
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+}
+.modal-img {
+    max-width: 100%;
 }

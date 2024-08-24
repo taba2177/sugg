@@ -10,7 +10,9 @@ use App\Http\Controllers\ComplaintController;
 // });
 
 // Route::post('/complaints', [ComplaintController::class, 'store'])->name('complaints.store');
-Route::post('complaints', 'App\Http\Controllers\ComplaintController@store');
+// Route::post('complaints', 'App\Http\Controllers\ComplaintController@store');
+
+Route::post('complaints', [ComplaintController::class, 'store'])->name('complaints.store');
 
 Route::get('complaints/table', [ComplaintController::class, 'index'])->name('complaints.index');
 
