@@ -67,7 +67,7 @@
                             // if (!json.recordsTotal || !json.recordsFiltered) {
                             //     return [];
                             // }
-                            console.log("Received data:", json);
+                            // console.log("Received data:", json);
                             return json.data;
                         }
                     },
@@ -170,23 +170,17 @@
                 $('#modal-img').attr('src', imgSrc);
                 $('#imageModal').modal('show');
             });
-             // Image click event to open modal
-            //  $(document).on('click', '.img-thumbnail', function() {
-            //     const imgSrc = $(this).data('full');
-            //     $('#modal-img').attr('src', imgSrc);
-            //     $('#imageModal').modal('show');
-            // });
 
             // Close modal when clicking the close button or outside the modal content
             $('.modal-close').on('click', function() {
                 $('#imageModal').fadeOut();
             });
 
-            $('#imageModal').on('click', function(e) {
-                if ($(e.target).is('.modal-content') === false) {
-                    $(this).fadeOut();
-                }
-            });
+            // $('#imageModal').on('click', function(e) {
+            //     if ($(e.target).is('.modal-content') === false) {
+            //         $(this).fadeOut();
+            //     }
+            // });
         });
     </script>
 @endsection
