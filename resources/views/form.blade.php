@@ -42,9 +42,9 @@
                 <div class="contact-one__input-box">
                     <select name="complaint_type" class="form-control" required>
                         <option value="" disabled selected>نوع الشكوى</option>
-                        <option value="service">الخدمة</option>
-                        <option value="product">المنتج</option>
-                        <option value="other">آخر</option>
+                        <option value="الخدمة">الخدمة</option>
+                        <option value="المنتج">المنتج</option>
+                        <option value="آخر">آخر</option>
                     </select>
                 </div>
             </div>
