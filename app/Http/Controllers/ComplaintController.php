@@ -66,7 +66,7 @@ class ComplaintController extends Controller
 
         Complaint::create($validated);
 
-        return redirect()->back()->with('message', 'تم إرسال الشكوى بنجاح، ستتواصل معك الإدارة في اقرب وقت لحل المشكلة');
+        return redirect()->back()->with('message', 'تم إرسال الشكوى بنجاح، ستتواصل معك الإدارة في اقرب وقت ممكن لحل المشكلة');
     }
 
     public function index()
