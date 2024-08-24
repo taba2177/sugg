@@ -4,6 +4,10 @@ from plyer import notification
 import win32serviceutil
 import win32service
 import win32event
+import logging
+from win10toast import ToastNotifier
+
+toaster = ToastNotifier()
 
 class ComplaintNotifierService(win32serviceutil.ServiceFramework):
     _svc_name_ = "ComplaintNotifierService"
@@ -14,32 +18,48 @@ class ComplaintNotifierService(win32serviceutil.ServiceFramework):
         win32serviceutil.ServiceFramework.__init__(self, args)
         self.hWaitStop = win32event.CreateEvent(None, 0, 0, None)
         self.stop_requested = False
+        self.setup_logging()
+
+    def setup_logging(self):
+        logging.basicConfig(
+            filename='C:\\ComplaintNotifierService.log',  # Change the path as needed
+            level=logging.DEBUG,
+            format='%(asctime)s - %(levelname)s - %(message)s',
+        )
+        logging.info('Service started.')
 
     def SvcStop(self):
         self.ReportServiceStatus(win32service.SERVICE_STOP_PENDING)
         win32event.SetEvent(self.hWaitStop)
         self.stop_requested = True
+        logging.info('Service stop requested.')
 
     def SvcDoRun(self):
         last_count = 0
 
         while not self.stop_requested:
             try:
-                response = requests.get('http://your-laravel-app-url/api/complaints/count-unread')
+                headers = {
+                    'Accept': 'application/json',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+                response = requests.get('https://website-cb99bbb9.pkh.sga.mybluehost.me/api/complaints/count-unread', headers=headers)
                 data = response.json()
+                logging.debug(f'API Response: {data}')
 
                 if data['count'] > last_count:
-                    notification.notify(
-                        title="New Complaints",
-                        message=f"You have {data['count']} unread complaints.",
-                        timeout=10  # Duration of the notification
-                    )
+                    toaster.show_toast(
+                    "شكاوي العملاء",
+                    f" لديك {data['count']}  شكوى جديدة ",
+                    duration=10,
+                    threaded=True
+                )
                     last_count = data['count']
+                    logging.info(f'Notification sent. New count: {data["count"]}')
 
             except Exception as e:
-                print(f"Error: {e}")
+                logging.error(f"Error: {e}")
 
-            time.sleep(60)  # Check every 60 seconds
+            time.sleep(120)  # Check every 120 seconds
 
 if __name__ == '__main__':
     win32serviceutil.HandleCommandLine(ComplaintNotifierService)
