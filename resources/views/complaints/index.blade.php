@@ -160,7 +160,7 @@
             // Auto-fetch new complaints every 30 seconds
             setInterval(function() {
                 $('#complaints-table').DataTable().ajax.reload(null, false); // Reload without resetting paging
-            }, 500); // 30 seconds
+            }, 20000); // 30 seconds
 
             // Event listeners for tab clicks
             $('#unread-tab').on('click', function() {
