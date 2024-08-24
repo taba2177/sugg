@@ -167,7 +167,7 @@
 
                             <li><a href="https://sunroll.com.sa/assets/Profile Sun Roll.pdf" target="_blank">البروفايل</a></li>
 
-                            <li><a href="{{ url("index.html") }}">إتصل بنا</a></li>
+                            <li><a href="{{ url("https://sunroll.com.sa/index.html") }}">إتصل بنا</a></li>
                         </ul>
                     </div><!-- /.main-menu__nav -->
                     <div class="main-menu__right">
@@ -298,7 +298,7 @@
                             <ul>
                                 <li><a href="https://sunroll.com.sa/about-us/index.html">نبذه عنا</a></li>
                                 <li><a href="https://sunroll.com.sa/blogs/index.html">المقالات</a></li>
-                                <li><a href="{{ url("index.html") }}">إتصل بنا</a></li>
+                                <li><a href="{{ url("https://sunroll.com.sa/index.html") }}">إتصل بنا</a></li>
                             </ul><!-- /.list-unstyled -->
                         </div><!-- /.footer-menu -->
                     </div>
@@ -385,7 +385,7 @@
         <div class="nav-box">
             <ul class="nav-container">
                 <li class="nav__item">
-                    <a href="{{ url("index.html") }}" class="nav__item-link">
+                    <a href="{{ url("https://sunroll.com.sa/index.html") }}" class="nav__item-link">
                         <div class="nav__item-icon">
                             <i class="fas fa-home"></i>
                         </div>
