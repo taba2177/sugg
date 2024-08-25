@@ -170,11 +170,15 @@
             // Event listeners for tab clicks
             $('#unread-tab').on('click', function() {
                 status = 'unread';
+                document.getElementById('unread-tab').classList.add('active');
+                document.getElementById('read-tab').classList.remove('active');
                 loadComplaints(status);
             });
 
             $('#read-tab').on('click', function() {
                 status = 'read';
+                document.getElementById('read-tab').classList.add('active');
+                document.getElementById('unread-tab').classList.remove('active');
                 loadComplaints(status);
             });
 
