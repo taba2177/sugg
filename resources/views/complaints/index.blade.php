@@ -139,7 +139,7 @@
                     scrollCollapse: true, // Enable scroll collapse
                     order: [[0, 'asc']], // Default ordering on first column
                     stateSave: false, // Save the state of the table including pagination and search
-                    layout: {topStart: {buttons: ['copy', 'csv', 'excel']}},
+                    layout: {topStart: {buttons: ['copy', 'excel']}},
                     drawCallback: function(settings) {
                 $('.complaint-gallery').each(function() {
                     lightGallery(this, {
