@@ -14128,3 +14128,8 @@ body.boxed-wrapper .main-menu__phone {
 .modal-img {
     max-width: 100%;
 }
+
+table.dataTable thead th, table.dataTable thead td, table.dataTable tfoot th, table.dataTable tfoot td
+{
+    text-align: right !important;
+}
